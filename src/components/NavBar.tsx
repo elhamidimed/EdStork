@@ -23,9 +23,7 @@ const NavBar = () => {
                 </h1>
               </div>
               <div>
-                <Link href="products/" className={buttonVariants()}>
-                  Log in
-                </Link>
+                <Button className="bg-blue-500 py-2 px-10">Log in </Button>
               </div>
             </div>
           </div>
