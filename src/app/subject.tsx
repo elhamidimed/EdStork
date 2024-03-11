@@ -1,6 +1,6 @@
-import imgMath from "../imcons/topic-math.svg";
+import imgMath from "../imcons/math.png";
 import imgPhysics from "../imcons/topic-physics.png";
-import imgInfo from "../imcons/topic-computer-science.svg";
+import imgInfo from "../imcons/computer-science.png";
 
 const subjects = [
   { name: "Mathématiques", image: imgMath },
