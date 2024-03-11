@@ -7,33 +7,33 @@ import myImage from "./First_image.png";
 export default function Home() {
   return (
     <MaxWidthWrapper>
-      <div className="flex justify-between pt-10">
+      <div className="flex justify-between mx-[34px] mb-[48px] px-[8px] py-[25px]">
         <div>
-          <div>
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-4">
-              {" "}
+          <div className="pt-12">
+            <h1 className="font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
               Learn by <span className="text-blue-600">doing</span>.
             </h1>
-            <p className="text-left box-border">
+            <h2 className="tracking-tight text-gray-900 sm:text-2xl mb-8">
               Interactive lessons in{" "}
-              <span style={{ fontWeight: "bold" }}>
+              <span style={{ fontWeight: 640 }}>
                 math, data analysis,
                 <br />
                 computer science, and programming.
               </span>
-            </p>
+            </h2>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <div className="w-200">
               <Link href="products/">
-                <Button className="bg-blue-500 w-50">Get Started</Button>
+                <Button className="w-[280px] h-[56px] bg-green-600">
+                  Get Started
+                </Button>
               </Link>
             </div>
-            <Button variant="ghost">Log in &rarr;</Button>
           </div>
         </div>
         <div>
-          <img src={myImage.src} alt="Image" width={400} height={400} />
+          <img src={myImage.src} alt="Image" width={568} height={397} />
         </div>
       </div>
     </MaxWidthWrapper>
