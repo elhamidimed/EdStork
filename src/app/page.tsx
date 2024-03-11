@@ -3,6 +3,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import myImage from "./First_image.png";
+import subjects from "./subject";
 
 export default function Home() {
   return (
@@ -35,6 +36,17 @@ export default function Home() {
         <div>
           <img src={myImage.src} alt="Image" width={568} height={397} />
         </div>
+      </div>
+      <div className="flex justify-between">
+        {subjects.map((subject) => {
+          return (
+            //TODO : make these clickable links
+            <div className="flex justify-between">
+              <img src={subject.image.src} alt="Image" width={32} height={32} />
+              <div className="pl-2 pt-1 text-lg ">{subject.name}</div>
+            </div>
+          );
+        })}
       </div>
     </MaxWidthWrapper>
   );
