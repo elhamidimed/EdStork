@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Icons } from "./icons";
 import myImage from "../imcons/apprendre.png";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { GiShoebillStork } from "react-icons/gi";
 
 import {
   Navbar,
@@ -19,15 +20,30 @@ const NavBar = () => {
   //TODO : make the Get started button appear in the navigation bar when we scroll down
   return (
     <Navbar
-      className="sticky z-50 pt-4 pb-2"
+      className="sticky z-50 pt-4 pb-2 drop-shadow-md"
       isBlurred={false}
       isBordered={true}
     >
       <NavbarBrand className="pl-[90px]">
-        <img src={myImage.src} alt="" width={50} height={50} />
+        <p className="ml-4 font-bold tracking-tight text-3xl">
+          Train
+          <span className="text-[#fbd542] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)]">
+            stork
+          </span>
+        </p>
+        <GiShoebillStork className="ml-2 mb-3" size={40} />
       </NavbarBrand>
+
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex pr-[90px]">
+          <Link href="#">
+            <Button
+              className="bg-White-500 text-black font-bold text-base  py-[10px] px-[25px]"
+              variant={"link"}
+            >
+              Log In &crarr;{" "}
+            </Button>
+          </Link>
           <Link href="#">
             <Button className="bg-White-500 text-black font-bold text-base border-2 border-black hover:shadow-md hover:bg-slate-50 py-[10px] px-[25px]">
               Sign up{" "}

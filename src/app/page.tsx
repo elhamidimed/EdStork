@@ -6,6 +6,7 @@ import Link from "next/link";
 import myImage from "../imcons/chip.gif";
 import subjects from "./subject";
 import SubjectDialog from "@/components/SubjectDialog";
+import { GiSolarSystem } from "react-icons/gi";
 
 export default function Home() {
   return (
@@ -57,12 +58,13 @@ export default function Home() {
             <SubjectDialog title={subject.name}>
               {[
                 <div className="flex justify-between">
-                  <img
+                  {subject.icon}
+                  {/* {<img
                     src={subject.image.src}
                     alt="Image"
                     width={32}
                     height={32}
-                  />
+                  />} */}
                   <div className="pl-2 pt-1 text-lg ">{subject.name}</div>
                 </div>,
                 <p>{subject.description}</p>,
@@ -74,3 +76,5 @@ export default function Home() {
     </MaxWidthWrapper>
   );
 }
+
+//TODO : make an animateGif config in tailwind to make the gifs go slower or faster
