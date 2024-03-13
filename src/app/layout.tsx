@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
 import ReviewsSection from "@/components/reviews";
+import Content from "@/components/content";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +26,10 @@ export default function RootLayout({
         <main className="relative flex flex-col min-h-screen">
           <NavBar />
           <div className="flex-grow flex-1 mt-10">{children}</div>
-          <div className="bg-slate-100 mt-10">
-            <ReviewsSection className="pt-5" />
+          <div className="bg-gray-100/85 mt-10 mx-8 rounded-lg">
+            <ReviewsSection className="pt-5 mb-4" />
           </div>
+          <Content />
         </main>
       </body>
     </html>
