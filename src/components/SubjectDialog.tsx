@@ -12,10 +12,6 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
-interface TwoChildrenProps {
-  children: ReactNode[]; // Array of two React nodes
-}
-
 export function SubjectDialog({
   title,
   description,
@@ -31,7 +27,9 @@ export function SubjectDialog({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">{firstChild}</Button>
+        <Button variant="outline" className="border-none">
+          {firstChild}
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

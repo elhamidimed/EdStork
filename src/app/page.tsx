@@ -10,7 +10,7 @@ import SubjectDialog from "@/components/SubjectDialog";
 export default function Home() {
   return (
     <MaxWidthWrapper>
-      <div className="flex justify-between mx-[34px] mb-[48px] px-[8px] py-[25px]">
+      <div className="flex h-[400px] justify-between mx-[34px] mb-[48px] px-[8px] py-[25px]">
         <div>
           <div className="pt-12">
             <h1 className="font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
@@ -50,7 +50,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex justify-between pt-10">
         {subjects.map((subject) => {
           return (
             //TODO : for the description I think it's better if we keep it simple with a list of content (think about using the cube icons in react for bullet points they look cool :) )

@@ -43,45 +43,47 @@ const reviews = [
 
 export function ReviewsSection({ className }: { className?: string }) {
   return (
-    <MaxWidthWrapper className={className}>
-      <Carousel
-        opts={{
-          align: "center",
-          loop: true,
-        }}
-        className="w-full px-50"
-      >
-        <CarouselContent>
-          {reviews.map((person, index) => (
-            <CarouselItem key={index} className="md:basis-1/5 lg:basis-1/3">
-              <div className="p-1">
-                <div className="flex justify-left">
-                  <img
-                    src={person.image.src}
-                    alt="Image"
-                    width={45}
-                    height={32}
-                    className="rounded-full"
-                  />
-                  <div>
-                    <div className=" pl-2 text-lg ">{person.name}</div>
+    <div className="bg-gray-100/85 mt-[110px] mx-[90px] rounded-lg">
+      <MaxWidthWrapper className={className}>
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+          }}
+          className="w-full px-50"
+        >
+          <CarouselContent>
+            {reviews.map((person, index) => (
+              <CarouselItem key={index} className="md:basis-1/5 lg:basis-1/3">
+                <div className="p-1">
+                  <div className="flex justify-left">
                     <img
-                      src={person.rate.src}
-                      alt="rating"
-                      width={100}
-                      className="pl-2"
+                      src={person.image.src}
+                      alt="Image"
+                      width={45}
+                      height={32}
+                      className="rounded-full"
                     />
+                    <div>
+                      <div className=" pl-2 text-lg ">{person.name}</div>
+                      <img
+                        src={person.rate.src}
+                        alt="rating"
+                        width={100}
+                        className="pl-2"
+                      />
+                    </div>
                   </div>
+                  <p className="pt-1">{person.msg}</p>
                 </div>
-                <p className="pt-1">{person.msg}</p>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </MaxWidthWrapper>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </MaxWidthWrapper>
+    </div>
   );
 }
 

@@ -26,9 +26,7 @@ export default function RootLayout({
         <main className="relative flex flex-col min-h-screen">
           <NavBar />
           <div className="flex-grow flex-1 mt-10">{children}</div>
-          <div className="bg-gray-100/85 mt-10 mx-8 rounded-lg">
-            <ReviewsSection className="pt-5 mb-4" />
-          </div>
+          <ReviewsSection className="pt-5 mb-4" />
           <Content />
         </main>
       </body>
