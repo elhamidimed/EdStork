@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Grid, Box } from "@radix-ui/themes";
 import { PiLightningLight } from "react-icons/pi";
 import { PiLightningFill } from "react-icons/pi";
-import { PiCircleDashed } from "react-icons/pi";
+import { PiLightningDuotone } from "react-icons/pi";
 
 const ourcontent = [
   {
@@ -22,6 +22,21 @@ const ourcontent = [
     image: multipleSin,
   },
 ];
+
+const DaysCard = ({
+  day,
+  children,
+}: {
+  day?: string;
+  children?: ReactNode;
+}) => {
+  return (
+    <div>
+      <h1 className="text-center mb-2 font-bold">{day}</h1>
+      {children}
+    </div>
+  );
+};
 const ContentCard = ({
   width,
   height,
@@ -83,7 +98,11 @@ const Content = () => {
         {" "}
         <h1 className="mt-[42px] mb-[16px] font-bold text-3xl text-center">
           Maîtriser les sujets en
-          <span className="text-blue-600"> 15 minutes </span> par jour
+          <span className="text-[#fbd542] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.6)]">
+            {" "}
+            15 minutes{" "}
+          </span>{" "}
+          par jour
         </h1>
         <p className="text-gray-500 text-center text-xl">
           Que vous soyez un débutant ou que soyez déjà prêt à plonger dans la
@@ -113,48 +132,40 @@ const Content = () => {
         classNameImage="ml-[300px] w-1/4 mt-5 "
         className="-mt-5"
       />
+      <div className="flex ml-10">
+        <div className="w-1/3 pt-[50px] ml-auto">
+          <h1 className=" text-left font-bold text-2xl mb-4 ">
+            {" "}
+            {"Restes Motivé(e)"}
+          </h1>
+          <p className="text-left text-gray-600 text-lg">
+            Crées une habitude d'apprentissage grâce à un contenu amusant et
+            toujours bien rythmé, à un suivi des progrès sous forme de jeu et à
+            des rappels chaleureux.
+          </p>
+        </div>
+        <div className="w-1/5 ml-[150px] mr-auto">
+          <div className="flex justify-between my-[80px]">
+            <DaysCard day="Lu">
+              <PiLightningFill size="50px" color="#fbd542"></PiLightningFill>
+            </DaysCard>
+            <DaysCard day="Ma">
+              <PiLightningFill
+                className="opacity-50 animate-wiggle"
+                size="50px"
+                color="#fbd542"
+              ></PiLightningFill>
+            </DaysCard>
+            <DaysCard day="Me">
+              <PiLightningDuotone
+                size="50px"
+                color="#fbd542"
+              ></PiLightningDuotone>
+            </DaysCard>
+          </div>
+        </div>
+      </div>
     </div>
-    // <div className="mt-8">
-    //   <MaxWidthWrapper className="mb-[80px]">
-    //     {" "}
-    //     <h1 className="mt-[42px] mb-[16px] font-bold text-3xl text-center">
-    //       Maîtriser les sujets en
-    //       <span className="text-blue-600"> 15 minutes </span> par jour
-    //     </h1>
-    //     <p className="text-gray-500 text-center text-xl">
-    //       Que vous soyez un débutant ou que soyez déjà prêt à plonger dans la
-    //       physique quantique et au-delà, <br />
-    //       Storkya vous permet de vous perfectionner rapidement grâce à des
-    //       leçons amusantes et facile à assimiler.
-    //     </p>
-    //   </MaxWidthWrapper>
-
-    //   <MaxWidthWrapper>
-    //     <div>
-    //       <ContentCard
-    //         title={ourcontent[0].title}
-    //         description={ourcontent[0].description}
-    //         imag={ourcontent[0].image.src}
-    //         imageToTheRight={true}
-    //         classNameText="pt-[50px]"
-    //         classNameImage="-ml-5"
-    //         width={200}
-    //         height={200}
-    //       />
-    //     </div>
-    //     <div>
-    //       <ContentCard
-    //         width={100}
-    //         height={200}
-    //         title={ourcontent[1].title}
-    //         description={ourcontent[1].description}
-    //         imag={ourcontent[1].image.src}
-    //         imageToTheRight={false}
-    //         classNameText="pt-[150px]"
-    //       />
-    //     </div>
-    //   </MaxWidthWrapper>
-    // </div>
   );
 };
 
