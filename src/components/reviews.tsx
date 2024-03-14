@@ -43,7 +43,7 @@ const reviews = [
 
 export function ReviewsSection({ className }: { className?: string }) {
   return (
-    <div className="bg-gray-100/85 mt-[110px] mx-[90px] rounded-lg">
+    <div className="bg-gray-100/85  mt-[110px] mx-[90px]   rounded-lg  ">
       <MaxWidthWrapper className={className}>
         <Carousel
           opts={{

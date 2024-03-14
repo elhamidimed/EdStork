@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
 import ReviewsSection from "@/components/reviews";
 import Content from "@/components/content";
+import Courses from "@/components/courses";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           <div className="flex-grow flex-1 mt-10">{children}</div>
           <ReviewsSection className="pt-5 mb-4" />
           <Content />
+          <Courses />
         </main>
       </body>
     </html>

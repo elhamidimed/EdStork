@@ -14,20 +14,20 @@ export default function Home() {
       <div className="flex h-[400px] justify-between mx-[34px] mb-[48px] px-[8px] py-[25px]">
         <div>
           <div className="pt-12">
-            <h1 className="font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
-              Learn by{" "}
+            <h1 className="font-bold tracking-tight text-gray-900 sm:text-[55px] mb-6">
+              Apprends en{" "}
               <span className="text-[#fbd542] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)]">
                 {" "}
-                doing
+                pratiquant
               </span>
               .
             </h1>
             <h2 className="tracking-tight text-gray-900 sm:text-2xl mb-8">
-              Interactive lessons in{" "}
+              Leçons interactives de{" "}
               <span style={{ fontWeight: 640 }}>
-                math, data analysis,
+                de maths, physiques,
                 <br />
-                computer science, and programming.
+                informatiques et de programmation.
               </span>
             </h2>
           </div>
@@ -59,12 +59,7 @@ export default function Home() {
               {[
                 <div className="flex justify-between">
                   {subject.icon}
-                  {/* {<img
-                    src={subject.image.src}
-                    alt="Image"
-                    width={32}
-                    height={32}
-                  />} */}
+
                   <div className="pl-2 pt-1 text-lg ">{subject.name}</div>
                 </div>,
                 <p>{subject.description}</p>,

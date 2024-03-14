@@ -117,8 +117,8 @@ const Content = () => {
         description={ourcontent[0].description}
         imag={ourcontent[0].image.src}
         imageToTheRight={true}
-        classNameText="w-1/3 ml-auto mr-auto pt-[50px]"
-        classNameImage="ml-auto mr-auto -ml-8 pt-8"
+        classNameText="self-center w-1/3 ml-auto mr-auto "
+        classNameImage="self-center ml-auto mr-auto -ml-8 "
         width={200}
         height={200}
       />
@@ -128,12 +128,12 @@ const Content = () => {
         description={ourcontent[1].description}
         imag={ourcontent[1].image.src}
         imageToTheRight={false}
-        classNameText="w-1/3 ml-auto mr-auto pt-[150px]"
-        classNameImage="ml-[300px] w-1/4 mt-5 "
+        classNameText="self-center w-1/3 ml-auto mr-auto"
+        classNameImage="self-center ml-[300px] w-1/4 mt-5 "
         className="-mt-5"
       />
       <div className="flex ml-10">
-        <div className="w-1/3 pt-[50px] ml-auto">
+        <div className="self-center w-1/3 ml-auto">
           <h1 className=" text-left font-bold text-2xl mb-4 ">
             {" "}
             {"Restes Motivé(e)"}
