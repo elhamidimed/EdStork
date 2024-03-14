@@ -10,139 +10,81 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
+import VerticalLinearStepper from "./Interlist";
 
-const classes = [
-  "Sixième",
-  "Cinquième",
-  "Quatrième",
-  "Troisième",
-  "Seconde",
-  "Première",
-  "Terminale",
+let classes = [
+  { grade: "Sixième" },
+  { grade: "Cinquième" },
+  { grade: "Quatrième" },
+  { grade: "Troisième" },
+  { grade: "Seconde" },
+  { grade: "Première" },
+  { grade: "Terminale" },
 ];
-const subjects = ["Maths", "Physiques", "informatiques"];
-
-var block = (
-  <MaxWidthWrapper className="flex justify-center mt-4 mb-10">
-    {" "}
-    <Tabs defaultValue={classes[classes.length - 1]} className="w-[800px]">
-      <TabsList className={"grid w-full grid-cols-" + classes.length}>
-        {classes.map((classe, index) => (
-          <TabsTrigger value={classe}>{classe}</TabsTrigger>
-        ))}
-      </TabsList>
-      {classes.map((classe, index) => (
-        <TabsContent value={classe}>
-          {classe}{" "}
-          <Card>
-            <CardHeader>
-              <CardTitle>{classe}</CardTitle>
-              <CardDescription>{classe}</CardDescription>
-            </CardHeader>
-
-            <CardFooter>
-              <Button>{classe}</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-      ))}
-    </Tabs>
-  </MaxWidthWrapper>
-);
+let subjects = [
+  { name: "Maths", color: "blue" },
+  { name: "Physiques", color: "orange" },
+  { name: "informatiques", color: "green" },
+];
 
 // TODO : use states to change between parent tabs and child tabs seemlessly (now when I'm in second child tab and click on the first parent tab it changes child tab to first)
 
 export default function Courses() {
-  return block;
+  const [subjectOpen, setSubject] = useState(0);
+  let nbGrades = classes.length;
+
+  return (
+    <MaxWidthWrapper className="flex justify-center mt-4 mb-10">
+      {" "}
+      <Tabs
+        defaultValue={classes[nbGrades - 1].grade}
+        className="w-[800px]"
+        orientation="horizontal"
+      >
+        <TabsList className={"grid w-full grid-cols-7"}>
+          {classes.map((classe, index) => (
+            <TabsTrigger value={classe.grade}>{classe.grade}</TabsTrigger>
+          ))}
+        </TabsList>
+        {classes.map((classe, index) => (
+          <TabsContent value={classe.grade}>
+            <Tabs
+              defaultValue={subjects[subjectOpen].name}
+              className="w-[800px]"
+            >
+              <TabsList className={"grid w-full grid-cols-3"}>
+                {subjects.map((subject, index) => (
+                  <TabsTrigger
+                    value={subject.name}
+                    key={subject.name}
+                    onClick={() => setSubject(index)}
+                  >
+                    {subject.name}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              {subjects.map((subject, index) => (
+                <TabsContent value={subject.name}>
+                  {subject.name}{" "}
+                  <Card>
+                    <VerticalLinearStepper />
+                    {/* <CardHeader>
+                      <CardTitle>{subject.name}</CardTitle>
+                      <CardDescription>{subject.name}</CardDescription>
+                    </CardHeader>
+
+                    <CardFooter>
+                      <Button>{subject.name}</Button>
+                    </CardFooter> */}
+                  </Card>
+                </TabsContent>
+              ))}
+            </Tabs>
+          </TabsContent>
+        ))}
+      </Tabs>
+    </MaxWidthWrapper>
+  );
 }
-// export default function Courses() {
-//   return (
-//     <MaxWidthWrapper className="flex justify-center mt-4 mb-10">
-//       <Tabs defaultValue="account" className="w-[800px]">
-//         <TabsList className="grid w-full grid-cols-3">
-//           <TabsTrigger value="account">Account</TabsTrigger>
-//           <TabsTrigger value="password">Password</TabsTrigger>
-//           <TabsTrigger value="third">third</TabsTrigger>
-//         </TabsList>
-//         <TabsContent value="account">
-//           <Tabs defaultValue="account" className="w-[400px]">
-//             <TabsList className="grid w-full grid-cols-2">
-//               <TabsTrigger value="account">AAccount</TabsTrigger>
-//               <TabsTrigger value="password">APassword</TabsTrigger>
-//             </TabsList>
-//             <TabsContent value="account">
-//               <Card>
-//                 <CardHeader>
-//                   <CardTitle>AAccount</CardTitle>
-//                   <CardDescription>
-//                     Make changes to your account here. Click save when you're
-//                     done.
-//                   </CardDescription>
-//                 </CardHeader>
-
-//                 <CardFooter>
-//                   <Button>Save changes</Button>
-//                 </CardFooter>
-//               </Card>
-//             </TabsContent>
-//             <TabsContent value="password">
-//               <Card>
-//                 <CardHeader>
-//                   <CardTitle>APassword</CardTitle>
-//                   <CardDescription>
-//                     Change your password here. After saving, you'll be logged
-//                     out.
-//                   </CardDescription>
-//                 </CardHeader>
-
-//                 <CardFooter>
-//                   <Button>Save password</Button>
-//                 </CardFooter>
-//               </Card>
-//             </TabsContent>
-//           </Tabs>
-//         </TabsContent>
-//         <TabsContent value="password">
-//           <Tabs defaultValue="account" className="w-[400px]">
-//             <TabsList className="grid w-full grid-cols-2">
-//               <TabsTrigger value="account">PAccount</TabsTrigger>
-//               <TabsTrigger value="password">PPassword</TabsTrigger>
-//             </TabsList>
-//             <TabsContent value="account">
-//               <Card>
-//                 <CardHeader>
-//                   <CardTitle>PAccount</CardTitle>
-//                   <CardDescription>
-//                     Make changes to your account here. Click save when you're
-//                     done.
-//                   </CardDescription>
-//                 </CardHeader>
-
-//                 <CardFooter>
-//                   <Button>Save changes</Button>
-//                 </CardFooter>
-//               </Card>
-//             </TabsContent>
-//             <TabsContent value="password">
-//               <Card>
-//                 <CardHeader>
-//                   <CardTitle>PPassword</CardTitle>
-//                   <CardDescription>
-//                     Change your password here. After saving, you'll be logged
-//                     out.
-//                   </CardDescription>
-//                 </CardHeader>
-
-//                 <CardFooter>
-//                   <Button>Save password</Button>
-//                 </CardFooter>
-//               </Card>
-//             </TabsContent>
-//           </Tabs>
-//         </TabsContent>
-//       </Tabs>
-//     </MaxWidthWrapper>
-//   );
-// }
