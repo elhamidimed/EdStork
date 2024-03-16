@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
@@ -8,7 +8,7 @@ import Content from "@/components/content";
 import Courses from "@/components/courses";
 import { Separator } from "@/components/ui/separator";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={cn("relative h-full font-sans antialiased", inter.className)}
+        className={cn("relative h-full font-sans antialiased", font.className)}
       >
         <main className="relative flex flex-col min-h-screen">
           <NavBar />

@@ -13,29 +13,19 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import VerticalLinearStepper from "./Interlist";
+import classes from "../lib/classesContent";
 
-let classes = [
-  { grade: "Sixième" },
-  { grade: "Cinquième" },
-  { grade: "Quatrième" },
-  { grade: "Troisième" },
-  { grade: "Seconde" },
-  { grade: "Première" },
-  { grade: "Terminale" },
-];
+type Matiere = {
+  [key: string]: string[];
+};
+
 let subjects = [
   {
     name: "Maths",
     color: "blue",
-    themes: [
-      "Nombres et calculs",
-      "Organisation, gestion de données, fonctions",
-      "	Espace et géométrie",
-      "Algorithmes et programmation",
-    ],
   },
-  { name: "Physiques", color: "orange" },
-  { name: "informatiques", color: "green" },
+  { name: "Physiques-Chimie", color: "orange" },
+  { name: "Informatiques", color: "green" },
 ];
 
 // TODO : use states to change between parent tabs and child tabs seemlessly (now when I'm in second child tab and click on the first parent tab it changes child tab to first)
@@ -57,14 +47,14 @@ export default function Courses() {
             <TabsTrigger value={classe.grade}>{classe.grade}</TabsTrigger>
           ))}
         </TabsList>
-        {classes.map((classe, index) => (
+        {classes.map((classe, classesIndex) => (
           <TabsContent value={classe.grade}>
             <Tabs
-              defaultValue={subjects[subjectOpen].name}
+              defaultValue={classe.matiere[subjectOpen].name}
               className="w-[800px]"
             >
               <TabsList className={"grid w-full grid-cols-3"}>
-                {subjects.map((subject, index) => (
+                {classe.matiere.map((subject, index) => (
                   <TabsTrigger
                     value={subject.name}
                     key={subject.name}
@@ -74,11 +64,15 @@ export default function Courses() {
                   </TabsTrigger>
                 ))}
               </TabsList>
-              {subjects.map((subject, index) => (
+              {classe.matiere.map((subject, index) => (
                 <TabsContent value={subject.name}>
                   {subject.name}{" "}
                   <Card>
-                    <VerticalLinearStepper color={subject.color} />
+                    <VerticalLinearStepper
+                      color={subject.color}
+                      gradeIndex={classesIndex}
+                      subjectIndex={index}
+                    />
                     {/* <CardHeader>
                       <CardTitle>{subject.name}</CardTitle>
                       <CardDescription>{subject.name}</CardDescription>

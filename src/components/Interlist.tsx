@@ -10,23 +10,17 @@ import Typography from "@mui/material/Typography";
 import StepButton from "@mui/material/StepButton";
 
 import { IoCube } from "react-icons/io5";
+import classes from "../lib/classesContent";
 
-const steps = [
-  {
-    label: "Cours1",
-    description: `Description Cours 1 Description Cours 1 Description Cours 1 Description Cours 1`,
-  },
-  {
-    label: "Cours2",
-    description: `Description Cours 2 Description Cours 2 Description Cours 2 Description Cours 2`,
-  },
-  {
-    label: "Cours3",
-    description: `Description Cours 3 Description Cours 3 Description Cours 3 Description Cours 3`,
-  },
-];
-
-export default function VerticalLinearStepper({ color }: { color?: string }) {
+export default function VerticalLinearStepper({
+  color,
+  gradeIndex,
+  subjectIndex,
+}: {
+  color?: string;
+  gradeIndex: number;
+  subjectIndex: number;
+}) {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleStep = (step: number) => () => {
@@ -40,20 +34,22 @@ export default function VerticalLinearStepper({ color }: { color?: string }) {
   return (
     <Box sx={{ maxWidth: 700, marginLeft: 5, paddingY: 5 }}>
       <Stepper nonLinear activeStep={activeStep} orientation="vertical">
-        {steps.map((step, index) => (
-          <Step key={step.label}>
-            <StepButton
-              onClick={handleStep(index)}
-              icon={<IoCube className="ml-1" color={color} />}
-            >
-              {step.label}{" "}
-            </StepButton>
+        {classes[gradeIndex].matiere[subjectIndex].content.map(
+          (step, index) => (
+            <Step key={index}>
+              <StepButton
+                onClick={handleStep(index)}
+                icon={<IoCube className="ml-1" color={color} />}
+              >
+                {step}{" "}
+              </StepButton>
 
-            <StepContent className="mt-6">
+              {/* {<StepContent className="mt-6">
               <Typography>{step.description}</Typography>
-            </StepContent>
-          </Step>
-        ))}
+            </StepContent>} */}
+            </Step>
+          )
+        )}
       </Stepper>
     </Box>
   );
