@@ -1,7 +1,7 @@
 let classes = [
   {
     grade: "Sixième",
-    matiere: [
+    matieres: [
       {
         color: "blue",
         name: "maths",
@@ -36,7 +36,7 @@ let classes = [
 
   {
     grade: "Cinquième",
-    matiere: [
+    matieres: [
       {
         color: "blue",
         name: "maths",
@@ -72,7 +72,7 @@ let classes = [
 
   {
     grade: "Quatrième",
-    matiere: [
+    matieres: [
       {
         color: "blue",
         name: "maths",
@@ -109,7 +109,7 @@ let classes = [
 
   {
     grade: "Troisième",
-    matiere: [
+    matieres: [
       {
         color: "blue",
         name: "maths",
@@ -146,7 +146,7 @@ let classes = [
 
   {
     grade: "Seconde",
-    matiere: [
+    matieres: [
       {
         color: "blue",
         name: "maths",
@@ -186,7 +186,7 @@ let classes = [
 
   {
     grade: "Première",
-    matiere: [
+    matieres: [
       {
         color: "blue",
         name: "maths",
@@ -223,7 +223,7 @@ let classes = [
 
   {
     grade: "Terminale",
-    matiere: [
+    matieres: [
       {
         color: "blue",
         name: "maths",

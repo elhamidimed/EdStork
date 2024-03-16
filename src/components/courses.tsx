@@ -15,21 +15,6 @@ import { useState } from "react";
 import VerticalLinearStepper from "./Interlist";
 import classes from "../lib/classesContent";
 
-type Matiere = {
-  [key: string]: string[];
-};
-
-let subjects = [
-  {
-    name: "Maths",
-    color: "blue",
-  },
-  { name: "Physiques-Chimie", color: "orange" },
-  { name: "Informatiques", color: "green" },
-];
-
-// TODO : use states to change between parent tabs and child tabs seemlessly (now when I'm in second child tab and click on the first parent tab it changes child tab to first)
-
 export default function Courses() {
   const [subjectOpen, setSubject] = useState(0);
   let nbGrades = classes.length;
@@ -50,11 +35,11 @@ export default function Courses() {
         {classes.map((classe, classesIndex) => (
           <TabsContent value={classe.grade}>
             <Tabs
-              defaultValue={classe.matiere[subjectOpen].name}
+              defaultValue={classe.matieres[subjectOpen].name}
               className="w-[800px]"
             >
               <TabsList className={"grid w-full grid-cols-3"}>
-                {classe.matiere.map((subject, index) => (
+                {classe.matieres.map((subject, index) => (
                   <TabsTrigger
                     value={subject.name}
                     key={subject.name}
@@ -64,7 +49,7 @@ export default function Courses() {
                   </TabsTrigger>
                 ))}
               </TabsList>
-              {classe.matiere.map((subject, index) => (
+              {classe.matieres.map((subject, index) => (
                 <TabsContent value={subject.name}>
                   {subject.name}{" "}
                   <Card>

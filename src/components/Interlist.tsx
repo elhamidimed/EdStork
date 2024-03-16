@@ -34,7 +34,7 @@ export default function VerticalLinearStepper({
   return (
     <Box sx={{ maxWidth: 700, marginLeft: 5, paddingY: 5 }}>
       <Stepper nonLinear activeStep={activeStep} orientation="vertical">
-        {classes[gradeIndex].matiere[subjectIndex].content.map(
+        {classes[gradeIndex].matieres[subjectIndex].content.map(
           (step, index) => (
             <Step key={index}>
               <StepButton
