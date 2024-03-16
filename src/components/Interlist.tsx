@@ -7,7 +7,9 @@ import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { IoMdCube } from "react-icons/io";
+import StepButton from "@mui/material/StepButton";
+
+import { IoCube } from "react-icons/io5";
 
 const steps = [
   {
@@ -24,15 +26,11 @@ const steps = [
   },
 ];
 
-export default function VerticalLinearStepper() {
+export default function VerticalLinearStepper({ color }: { color?: string }) {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  const handleStep = (step: number) => () => {
+    setActiveStep(step);
   };
 
   const handleReset = () => {
@@ -41,50 +39,22 @@ export default function VerticalLinearStepper() {
 
   return (
     <Box sx={{ maxWidth: 700, marginLeft: 5, paddingY: 5 }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper nonLinear activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
-            <StepLabel
-              optional={
-                index === 2 ? (
-                  <Typography variant="caption">Last step</Typography>
-                ) : null
-              }
+            <StepButton
+              onClick={handleStep(index)}
+              icon={<IoCube className="ml-1" color={color} />}
             >
-              {step.label}
-            </StepLabel>
-            <StepContent>
+              {step.label}{" "}
+            </StepButton>
+
+            <StepContent className="mt-6">
               <Typography>{step.description}</Typography>
-              <Box sx={{ mb: 2 }}>
-                <div>
-                  <Button
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 1, mr: 1 }}
-                  >
-                    {index === steps.length - 1 ? "Finish" : "Continue"}
-                  </Button>
-                  <Button
-                    disabled={index === 0}
-                    onClick={handleBack}
-                    sx={{ mt: 1, mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                </div>
-              </Box>
             </StepContent>
           </Step>
         ))}
       </Stepper>
-      {activeStep === steps.length && (
-        <Paper square elevation={0} sx={{ p: 3 }}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-            Reset
-          </Button>
-        </Paper>
-      )}
     </Box>
   );
 }

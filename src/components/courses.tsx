@@ -24,7 +24,16 @@ let classes = [
   { grade: "Terminale" },
 ];
 let subjects = [
-  { name: "Maths", color: "blue" },
+  {
+    name: "Maths",
+    color: "blue",
+    themes: [
+      "Nombres et calculs",
+      "Organisation, gestion de données, fonctions",
+      "	Espace et géométrie",
+      "Algorithmes et programmation",
+    ],
+  },
   { name: "Physiques", color: "orange" },
   { name: "informatiques", color: "green" },
 ];
@@ -69,7 +78,7 @@ export default function Courses() {
                 <TabsContent value={subject.name}>
                   {subject.name}{" "}
                   <Card>
-                    <VerticalLinearStepper />
+                    <VerticalLinearStepper color={subject.color} />
                     {/* <CardHeader>
                       <CardTitle>{subject.name}</CardTitle>
                       <CardDescription>{subject.name}</CardDescription>
