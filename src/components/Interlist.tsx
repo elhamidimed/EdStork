@@ -41,12 +41,12 @@ export default function VerticalLinearStepper({
                 onClick={handleStep(index)}
                 icon={<IoCube className="ml-1" color={color} />}
               >
-                {step}{" "}
+                {step.titre}{" "}
               </StepButton>
 
-              {/* {<StepContent className="mt-6">
-              <Typography>{step.description}</Typography>
-            </StepContent>} */}
+              <StepContent className="mt-6">
+                <Typography>{step.description}</Typography>
+              </StepContent>
             </Step>
           )
         )}

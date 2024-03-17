@@ -33,8 +33,8 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <div className="w-200">
-              <Link href="products/">
-                <Button className="w-[280px] h-[56px] bg-green-600">
+              <Link href="">
+                <Button className="w-[280px] h-[56px]" variant="main">
                   Get Started
                 </Button>
               </Link>
