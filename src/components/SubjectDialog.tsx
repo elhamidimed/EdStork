@@ -12,7 +12,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 
-export function SubjectDialog({
+export default function SubjectDialog({
   title,
   description,
   className,
@@ -48,5 +48,3 @@ export function SubjectDialog({
     </Dialog>
   );
 }
-
-export default SubjectDialog;
