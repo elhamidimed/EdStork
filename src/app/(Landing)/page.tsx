@@ -36,7 +36,7 @@ export default function Home() {
             <div className="w-200">
               <Link href="/courses">
                 <Button className="w-[280px] h-[56px]" variant="main">
-                  Get Started
+                  Découvrir
                 </Button>
               </Link>
             </div>
@@ -61,7 +61,9 @@ export default function Home() {
                 <div className="flex justify-between">
                   {subject.icon}
 
-                  <div className="pl-2 pt-1 text-sm md:text-lg">{subject.name}</div>
+                  <div className="pl-2 pt-1 text-sm md:text-lg">
+                    {subject.name}
+                  </div>
                 </div>,
                 <p>{subject.description}</p>,
               ]}
