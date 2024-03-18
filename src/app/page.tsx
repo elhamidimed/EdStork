@@ -14,7 +14,7 @@ export default function Home() {
       <div className="flex justify-between items-center mx-[34px] mb-[48px] px-[8px] py-[25px] md:flex-row flex-col-reverse">
         <div className="flex flex-col items-center md:items-start">
           <div className="pt-12">
-            <h1 className="font-bold tracking-tight text-gray-900 sm:text-[55px] mb-6 md:text-left text-center">
+            <h1 className="font-bold tracking-tight text-gray-900 text-[30px] sm:text-[55px] mb-6 md:text-left text-center">
               Apprends en{" "}
               <span className="text-[#fbd542] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,1)]">
                 {" "}
@@ -22,7 +22,7 @@ export default function Home() {
               </span>
               .
             </h1>
-            <h2 className="tracking-tight text-gray-900 sm:text-2xl mb-8 md:text-left text-center">
+            <h2 className="tracking-tight text-gray-900 text-sm sm:text-2xl mb-8 md:text-left text-center">
               Leçons interactives de{" "}
               <span style={{ fontWeight: 640 }}>
                 de maths, physiques,
@@ -60,7 +60,7 @@ export default function Home() {
                 <div className="flex justify-between">
                   {subject.icon}
 
-                  <div className="pl-2 pt-1 text-sm md:text-lg">{subject.name}</div>
+                  <div className="pl-2 pt-1 text-xs sm:text-sm md:text-lg">{subject.name}</div>
                 </div>,
                 <p>{subject.description}</p>,
               ]}
