@@ -3,10 +3,11 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 //import myImage from "./First_image.png";
-import myImage from "../imcons/chip.gif";
-import subjects from "./subject";
+import myImage from "@/imcons/chip.gif";
+import subjects from "../subject";
 import SubjectDialog from "@/components/SubjectDialog";
 import { GiSolarSystem } from "react-icons/gi";
+import { SignUp } from "@clerk/nextjs";
 
 export default function Home() {
   return (
@@ -33,7 +34,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <div className="w-200">
-              <Link href="">
+              <Link href="/courses">
                 <Button className="w-[280px] h-[56px]" variant="main">
                   Get Started
                 </Button>
@@ -55,7 +56,7 @@ export default function Home() {
         {subjects.map((subject) => {
           return (
             //TODO : for the description I think it's better if we keep it simple with a list of content (think about using the cube icons in react for bullet points they look cool :) )
-            <SubjectDialog title={subject.name}>
+            <SubjectDialog title={subject.name} key={subject.name}>
               {[
                 <div className="flex justify-between">
                   {subject.icon}

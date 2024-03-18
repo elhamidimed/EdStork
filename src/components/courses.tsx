@@ -29,11 +29,13 @@ export default function Courses() {
       >
         <TabsList className={"grid w-full grid-cols-7"}>
           {classes.map((classe, index) => (
-            <TabsTrigger value={classe.grade}>{classe.grade}</TabsTrigger>
+            <TabsTrigger value={classe.grade} key={classe.grade}>
+              {classe.grade}
+            </TabsTrigger>
           ))}
         </TabsList>
         {classes.map((classe, classesIndex) => (
-          <TabsContent value={classe.grade}>
+          <TabsContent value={classe.grade} key={classe.grade}>
             <Tabs
               defaultValue={classe.matieres[subjectOpen].name}
               className="w-[800px]"
@@ -50,7 +52,7 @@ export default function Courses() {
                 ))}
               </TabsList>
               {classe.matieres.map((subject, index) => (
-                <TabsContent value={subject.name}>
+                <TabsContent value={subject.name} key={subject.name}>
                   {subject.name}{" "}
                   <Card>
                     <VerticalLinearStepper
