@@ -59,9 +59,15 @@ const ContentCard = ({
   imageToTheRight?: boolean;
 }) => {
   var firstComponent = (
-    <div className={classNameText ? classNameText : "w-1/3 flex-col justify-left items-left"}>
+    <div
+      className={
+        classNameText ? classNameText : "w-1/3 flex-col justify-left items-left"
+      }
+    >
       <h1 className=" text-left font-bold text-2xl mb-4 "> {title}</h1>
-      <p className="text-left text-gray-600 text-lg text-justify">{description}</p>
+      <p className="text-left text-gray-600 text-lg text-justify">
+        {description}
+      </p>
     </div>
   );
 
@@ -120,7 +126,6 @@ const Content = () => {
         classNameText="self-center w-2/3 sm:w-1/3"
         classNameImage="self-center w-2/3 sm:w-1/4"
         className="flex-col sm:flex-row justify-around items-center"
-
         width={200}
         height={200}
       />
@@ -142,9 +147,9 @@ const Content = () => {
             {"Restes Motivé(e)"}
           </h1>
           <p className="text-left text-gray-600 text-lg text-justify">
-            Crées une habitude d'apprentissage grâce à un contenu amusant et
-            toujours bien rythmé, à un suivi des progrès sous forme de jeu et à
-            des rappels chaleureux.
+            Crées une habitude d&apos;apprentissage grâce à un contenu amusant
+            et toujours bien rythmé, à un suivi des progrès sous forme de jeu et
+            à des rappels chaleureux.
           </p>
         </div>
         <div className="w-2/5 sm:w-1/5">
