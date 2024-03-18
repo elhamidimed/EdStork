@@ -5,7 +5,13 @@ import { Icons } from "./icons";
 import myImage from "../imcons/apprendre.png";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { GiShoebillStork } from "react-icons/gi";
-import { SignInButton, SignUpButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignUpButton,
+  UserButton,
+  SignedIn,
+  SignedOut,
+} from "@clerk/nextjs";
 
 import {
   Navbar,
@@ -51,7 +57,7 @@ const NavBar = () => {
 
             <SignUpButton mode="modal">
               <Link href="#">
-                <Button className="bg-White-500 text-black font-bold text-base border-2 border-black hover:shadow-md hover:bg-slate-50 py-[10px] px-[25px]">
+                <Button className="bg-White-500 text-black font-bold text-base border-2 border-b-4 border-black hover:border-b-2 hover:shadow-md hover:bg-slate-50 py-[10px] px-[25px]">
                   Sign up{" "}
                 </Button>
               </Link>
@@ -62,7 +68,7 @@ const NavBar = () => {
           </SignedIn>
         </NavbarItem>
       </NavbarContent>
-    </Navbar >
+    </Navbar>
   );
   //return (
   // <header className=" sticky top-0 bg-white">

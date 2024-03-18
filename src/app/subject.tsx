@@ -26,5 +26,12 @@ const subjects = [
     description:
       "Plongez dans le monde dynamique de l'informatique et explorez les bases de la programmation, de l'algorithmique et de la conception de logiciels avec notre cours d'informatique. Des langages de programmation populaires comme Python et Java aux concepts avancés tels que la programmation orientée objet et les structures de données, ce cours vous fournira les compétences essentielles pour devenir un expert en informatique.",
   },
+  {
+    name: "SVT",
+    image: imgPhysics,
+    icon: <GiSolarSystem size={32} />,
+    description:
+      "Explorez les lois fondamentales de l'univers et découvrez les principes qui gouvernent notre réalité physique avec notre cours de physique. De la mécanique classique à l'électromagnétisme en passant par la thermodynamique, ce cours vous plongera dans un voyage captivant à travers les phénomènes naturels qui nous entourent.",
+  },
 ];
 export default subjects;
