@@ -24,7 +24,7 @@ export default function Courses() {
       {" "}
       <Tabs
         defaultValue={classes[nbGrades - 1].grade}
-        className="w-[800px]"
+        className="w-[90%] sm:w-[70%]"
         orientation="horizontal"
       >
         <TabsList className={"grid w-full grid-cols-7"}>
@@ -38,7 +38,7 @@ export default function Courses() {
           <TabsContent value={classe.grade} key={classe.grade}>
             <Tabs
               defaultValue={classe.matieres[subjectOpen].name}
-              className="w-[800px]"
+              className="w-full"
             >
               <TabsList className={"grid w-full grid-cols-3"}>
                 {classe.matieres.map((subject, index) => (
