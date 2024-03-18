@@ -58,7 +58,9 @@ const NavBar = () => {
             </SignUpButton>
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            <div className="border-2 border-black text-lg rounded-full">
+              <UserButton />
+            </div>
           </SignedIn>
         </NavbarItem>
       </NavbarContent>
