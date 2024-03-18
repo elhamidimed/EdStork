@@ -25,7 +25,7 @@ const NavBar = () => {
       isBlurred={false}
       isBordered={true}
     >
-      <NavbarBrand className="pl-[90px]">
+      <NavbarBrand className="pl-[5%]">
         <p className="ml-4 font-bold tracking-tight text-3xl">
           Train
           <span className="text-[#fbd542] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)]">
@@ -35,8 +35,8 @@ const NavBar = () => {
         <GiShoebillStork className="ml-2 mb-3" size={40} />
       </NavbarBrand>
 
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex pr-[90px]">
+      <NavbarContent justify="end" className="pr-[5%]">
+        <NavbarItem className="flex">
           <Link href="#">
             <Button
               className="bg-White-500 text-black font-bold text-base  py-[10px] px-[25px]"
