@@ -3,6 +3,7 @@ import imgPhysics from "../imcons/topic-physics.png";
 import imgInfo from "../imcons/computer-science.png";
 import { GiSolarSystem } from "react-icons/gi";
 import { TbMathIntegrals } from "react-icons/tb";
+import { MdOutlineBiotech } from "react-icons/md";
 
 const subjects = [
   {
@@ -29,9 +30,8 @@ const subjects = [
   {
     name: "SVT",
     image: imgPhysics,
-    icon: <GiSolarSystem size={32} />,
-    description:
-      "Explorez les lois fondamentales de l'univers et découvrez les principes qui gouvernent notre réalité physique avec notre cours de physique. De la mécanique classique à l'électromagnétisme en passant par la thermodynamique, ce cours vous plongera dans un voyage captivant à travers les phénomènes naturels qui nous entourent.",
+    icon: <MdOutlineBiotech size={32} />,
+    description: "To be completed for SVT",
   },
 ];
 export default subjects;
