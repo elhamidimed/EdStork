@@ -12,15 +12,7 @@ export const SideBar = ({ className }: Props) => {
         className
       )}
     >
-      <div className="pt-8 pl-4 pb-7 flex items-center gap-x-1">
-        <p className=" font-bold tracking-tight text-3xl">
-          Train
-          <span className="text-[#fbd542] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)]">
-            stork
-          </span>
-        </p>
-        <GiShoebillStork className="ml-2 " size={25} />
-      </div>
+      something
     </div>
   );
 };
