@@ -59,9 +59,15 @@ const ContentCard = ({
   imageToTheRight?: boolean;
 }) => {
   var firstComponent = (
-    <div className={classNameText ? classNameText : "w-1/3 ml-auto mr-auto"}>
+    <div
+      className={
+        classNameText ? classNameText : "w-1/3 flex-col justify-left items-left"
+      }
+    >
       <h1 className=" text-left font-bold text-2xl mb-4 "> {title}</h1>
-      <p className="text-left text-gray-600 text-lg">{description}</p>
+      <p className="text-left text-gray-600 text-lg text-justify">
+        {description}
+      </p>
     </div>
   );
 
@@ -69,7 +75,7 @@ const ContentCard = ({
     <img
       src={imag}
       alt=""
-      className={cn(classNameImage ? classNameImage : "ml-auto mr-auto")}
+      className={cn(classNameImage ? classNameImage : "")}
       width={width ? width : 205}
       height={height ? height : 280}
     />
@@ -77,13 +83,13 @@ const ContentCard = ({
 
   if (imageToTheRight) {
     return (
-      <div className={cn("flex ml-10", className)}>
+      <div className={cn("flex", className)}>
         {firstComponent} {secondComponent}
       </div>
     );
   } else {
     return (
-      <div className={cn("flex ml-10", className)}>
+      <div className={cn("flex", className)}>
         {secondComponent}
         {firstComponent}
       </div>
@@ -93,10 +99,10 @@ const ContentCard = ({
 
 const Content = () => {
   return (
-    <div className="mt-8">
+    <div className="mt-8 flex flex-col items-center">
       <MaxWidthWrapper className="mb-[80px]">
         {" "}
-        <h1 className="mt-[42px] mb-[16px] font-bold text-3xl text-center">
+        <h1 className="mt-[42px] mb-[16px] font-bold text-2xl sm:text-3xl text-center">
           Maîtriser les sujets en
           <span className="text-[#fbd542] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.6)]">
             {" "}
@@ -104,7 +110,7 @@ const Content = () => {
           </span>{" "}
           par jour
         </h1>
-        <p className="text-gray-500 text-center text-xl">
+        <p className="text-gray-500 text-center text-md sm:text-xl">
           Que vous soyez un débutant ou que soyez déjà prêt à plonger dans la
           physique quantique et au-delà, <br />
           Storkya vous permet de vous perfectionner rapidement grâce à des
@@ -117,8 +123,9 @@ const Content = () => {
         description={ourcontent[0].description}
         imag={ourcontent[0].image.src}
         imageToTheRight={true}
-        classNameText="self-center w-1/3 ml-auto mr-auto "
-        classNameImage="self-center ml-auto mr-auto -ml-8 "
+        classNameText="self-center w-2/3 sm:w-1/3"
+        classNameImage="self-center w-2/3 sm:w-1/4"
+        className="flex-col sm:flex-row justify-around items-center"
         width={200}
         height={200}
       />
@@ -128,23 +135,24 @@ const Content = () => {
         description={ourcontent[1].description}
         imag={ourcontent[1].image.src}
         imageToTheRight={false}
-        classNameText="self-center w-1/3 ml-auto mr-auto"
-        classNameImage="self-center ml-[300px] w-1/4 mt-5 "
-        className="-mt-5"
+        classNameText="self-center w-2/3 sm:w-1/3"
+        classNameImage="self-center w-2/3 sm:w-1/4"
+        className="flex-col-reverse sm:flex-row justify-around items-center"
       />
-      <div className="flex ml-10">
-        <div className="self-center w-1/3 ml-auto">
+
+      <div className="flex flex-col sm:flex-row justify-around items-center">
+        <div className="self-center w-2/3 sm:w-1/3 flex flex-col justify-left items-left">
           <h1 className=" text-left font-bold text-2xl mb-4 ">
             {" "}
             {"Restes Motivé(e)"}
           </h1>
-          <p className="text-left text-gray-600 text-lg">
-            Crées une habitude d'apprentissage grâce à un contenu amusant et
-            toujours bien rythmé, à un suivi des progrès sous forme de jeu et à
-            des rappels chaleureux.
+          <p className="text-left text-gray-600 text-lg text-justify">
+            Crées une habitude d&apos;apprentissage grâce à un contenu amusant
+            et toujours bien rythmé, à un suivi des progrès sous forme de jeu et
+            à des rappels chaleureux.
           </p>
         </div>
-        <div className="w-1/5 ml-[150px] mr-auto">
+        <div className="w-2/5 sm:w-1/5">
           <div className="flex justify-between my-[80px]">
             <DaysCard day="Lu">
               <PiLightningFill size="50px" color="#fbd542"></PiLightningFill>

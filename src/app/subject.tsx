@@ -3,6 +3,7 @@ import imgPhysics from "../imcons/topic-physics.png";
 import imgInfo from "../imcons/computer-science.png";
 import { GiSolarSystem } from "react-icons/gi";
 import { TbMathIntegrals } from "react-icons/tb";
+import { MdOutlineBiotech } from "react-icons/md";
 
 const subjects = [
   {
@@ -25,6 +26,12 @@ const subjects = [
     icon: <img src={imgInfo.src} alt="Image" width={32} height={32} />,
     description:
       "Plongez dans le monde dynamique de l'informatique et explorez les bases de la programmation, de l'algorithmique et de la conception de logiciels avec notre cours d'informatique. Des langages de programmation populaires comme Python et Java aux concepts avancés tels que la programmation orientée objet et les structures de données, ce cours vous fournira les compétences essentielles pour devenir un expert en informatique.",
+  },
+  {
+    name: "SVT",
+    image: imgPhysics,
+    icon: <MdOutlineBiotech size={32} />,
+    description: "To be completed for SVT",
   },
 ];
 export default subjects;
