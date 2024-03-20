@@ -1,4 +1,3 @@
-"use client";
 import {
   Sheet,
   SheetTrigger,
@@ -15,9 +14,9 @@ export const MobileSideBar = () => {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu />
+        <Menu className="text-black" />
       </SheetTrigger>
-      <SheetContent className="w-[400px] sm:w-[540px]">
+      <SheetContent className="p-0  w-[400px] sm:w-[540px]" side={"left"}>
         <SideBar />
       </SheetContent>
     </Sheet>
