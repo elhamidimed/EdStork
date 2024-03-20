@@ -5,7 +5,7 @@ import { SidebarItem } from "./sidebar-item";
 import learn from "@/imcons/learn.svg";
 import board from "@/imcons/leaderboard.svg";
 import quests from "@/imcons/quests.svg";
-import shop from "@/imcons/shop.svg";
+import shop from "@/imcons/stats.png";
 import { ClerkLoading, ClerkLoaded, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react"; // TODO : maybe use placeholders they look more professional
 
@@ -32,10 +32,18 @@ export const SideBar = ({ className }: Props) => {
         </div>
       </Link>
       <div className="flex flex-col gap-y-2 flex-1">
-        <SidebarItem label="whatever" href="/courses" iconSrc={learn.src} />
-        <SidebarItem label="whatever2" href="/" iconSrc={board.src} />
-        <SidebarItem label="whatever3" href="/" iconSrc={quests.src} />
-        <SidebarItem label="whatever4" href="/" iconSrc={shop.src} />
+        <SidebarItem
+          label="Toutes les matieres"
+          href="/courses"
+          iconSrc={learn.src}
+        />
+        <SidebarItem label="Progrés" href="/" iconSrc={board.src} />
+        <SidebarItem
+          label="Planifier mon examen"
+          href="/"
+          iconSrc={quests.src}
+        />
+        <SidebarItem label="Statistiques" href="/" iconSrc={shop.src} />
       </div>
       <div className="p-4">
         <ClerkLoading>
