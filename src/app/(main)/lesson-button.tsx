@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Check, Crown, Star } from "lucide-react";
+import { Check, Crown, Star, Lock } from "lucide-react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import "react-circular-progressbar/dist/styles.css";
+
+// TODO : refactor the color to depend on the subject
 
 type Props = {
   id: number;
@@ -47,7 +49,7 @@ export const LessonButton = ({
   const isLast = index === totalCount;
   const isCompleted = !current && !locked;
 
-  const Icon = isCompleted ? Check : isLast ? Crown : Star;
+  const Icon = isCompleted ? Check : isLast ? Crown : locked ? Lock : Star;
 
   const href = isCompleted ? `/lesson/${id}` : "/lesson";
 
@@ -66,7 +68,7 @@ export const LessonButton = ({
       >
         {current ? (
           <div className="h-[102px] w-[102px] relative">
-            <div className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold uppercase text-green-500 bg-white rounded-xl animate-bounce tracking-wide z-10">
+            <div className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold uppercase text-purple-500 bg-white rounded-xl animate-bounce tracking-wide z-10">
               Start
               <div className="absolute left-1/2 -bottom-2 w-0 h-0 border-x-8 border-x-transparent border-t-8 transform -translate-x-1/2" />
             </div>
@@ -74,46 +76,66 @@ export const LessonButton = ({
               value={Number.isNaN(percentage) ? 0 : percentage}
               styles={{
                 path: {
-                  stroke: "#4ade80",
+                  stroke: "purple",
                 },
                 trail: {
                   stroke: "#e5e7eb",
                 },
               }}
             >
-              <Button
-                size="rounded"
-                variant={locked ? "locked" : "secondary"}
-                className="h-[70px] w-[70px] border-b-8 hover:border-b-2"
+              <div
+                className={cn(
+                  "flex items-center justify-center h-[70px] w-[70px] rounded-2xl border-2 border-b-[12px] border-r-[12px] border-gray-500 ",
+                  locked ? "bg-slate-200" : "bg-purple-400"
+                )}
+                style={{ transform: "rotateX(45deg) rotateZ(45deg)" }}
               >
-                <Icon
+                <Button
+                  variant={locked ? "locked" : "secondary"}
                   className={cn(
-                    "h-10 w-10",
-                    locked
-                      ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
-                      : "fill-primary-foreground text-primary-foreground",
-                    isCompleted && "fill-none stroke-[4]"
+                    "-mt-[10px] -ml-[10px] h-[55px] w-[55px] border-2 border-b-[11px] border-r-[11px] hover:-mt-1 hover:-ml-1 border-gray-500 ",
+                    !locked ? "bg-purple-400 hover:bg-purple-300" : ""
                   )}
-                />
-              </Button>
+                >
+                  <Icon
+                    className={cn(
+                      "-rotate-45",
+                      locked
+                        ? "fill-neutral-400 text-neutral-400 stroke-neutral-400 "
+                        : "fill-primary-foreground text-primary-foreground ",
+                      isCompleted && "fill-none stroke-[4]"
+                    )}
+                  />
+                </Button>
+              </div>
             </CircularProgressbarWithChildren>
           </div>
         ) : (
-          <Button
-            size="rounded"
-            variant={locked ? "locked" : "secondary"}
-            className="h-[70px] w-[70px] border-b-8 hover:border-b-2"
+          <div
+            className={cn(
+              "flex items-center justify-center h-[70px] w-[70px] rounded-2xl border-2 border-b-[12px] border-r-[12px] border-gray-500 ",
+              locked ? "bg-slate-200" : "bg-purple-400"
+            )}
+            style={{ transform: "rotateX(45deg) rotateZ(45deg)" }}
           >
-            <Icon
+            <Button
+              variant={locked ? "locked" : "secondary"}
               className={cn(
-                "h-10 w-10",
-                locked
-                  ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
-                  : "fill-primary-foreground text-primary-foreground",
-                isCompleted && "fill-none stroke-[4]"
+                "-mt-[10px] -ml-[10px] h-[55px] w-[55px] border-2 border-b-[11px] border-r-[11px] hover:-mt-1 hover:-ml-1 border-gray-500 ",
+                !locked ? "bg-purple-400 hover:bg-purple-300" : ""
               )}
-            />
-          </Button>
+            >
+              <Icon
+                className={cn(
+                  "-rotate-45",
+                  locked
+                    ? " stroke-black h-5 w-5 "
+                    : "fill-primary-foreground text-primary-foreground ",
+                  isCompleted && "fill-none stroke-[4]"
+                )}
+              />
+            </Button>
+          </div>
         )}
       </div>
     </Link>
