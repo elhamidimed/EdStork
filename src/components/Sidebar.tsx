@@ -39,7 +39,7 @@ export const SideBar = ({ className }: Props) => {
         />
         <SidebarItem label="Progrés" href="/" iconSrc={board.src} />
         <SidebarItem
-          label="Planifier mon examen"
+          label="Préparer mon examen"
           href="/"
           iconSrc={quests.src}
         />
