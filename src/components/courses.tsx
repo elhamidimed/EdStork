@@ -24,7 +24,7 @@ export default function Courses() {
       {" "}
       <Tabs
         defaultValue={classes[nbGrades - 1].grade}
-        className="w-[90%] sm:w-[70%]"
+        className="w-[90%] sm:w-[90%]"
         orientation="horizontal"
       >
         <TabsList className={"grid w-full grid-cols-7"}>
