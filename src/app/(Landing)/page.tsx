@@ -52,7 +52,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex justify-around pt-10">
+      <div className="flex flex-col justify-around sm:flex-row pt-10">
         {subjects.map((subject, index) => {
           return (
             //TODO : for the description I think it's better if we keep it simple with a list of content (think about using the cube icons in react for bullet points they look cool :) )
