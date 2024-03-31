@@ -2,7 +2,7 @@ import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
   // Routes that can be accessed while signed out
-  publicRoutes: ["/", "/sign-in", "/courses", "/testing", "/levels"],
+  publicRoutes: ["/", "/sign-in", "/courses", "/testing", "/levels", "/lesson", "lesson/1", "/api/xataData"],
 });
 
 export const config = {
