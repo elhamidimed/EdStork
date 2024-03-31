@@ -33,7 +33,15 @@ const QuizComponent: React.FC<QuizProps> = ({ quiz, onChange }) => {
         <label
           key={index}
           className={`flex items-center space-x-2 cursor-pointer hover:bg-gray-100 rounded-lg p-2 ${
-            selectedChoices.includes(choice.text) ? "bg-blue-200" : "bg-white"
+            submitted
+              ? choice.correct
+                ? "bg-green-200"
+                : selectedChoices.includes(choice.text)
+                ? "bg-red-200"
+                : "bg-white"
+              : selectedChoices.includes(choice.text)
+              ? "bg-blue-200"
+              : "bg-white"
           }`}
         >
           <input
@@ -54,33 +62,6 @@ const QuizComponent: React.FC<QuizProps> = ({ quiz, onChange }) => {
         >
           Submit
         </button>
-      )}
-      {submitted && (
-        <div className="mt-2">
-          <p className="font-bold">Correct choices:</p>
-          <ul>
-            {quiz.choices.map(
-              (choice, index) =>
-                choice.correct && (
-                  <li key={index} className="text-green-500">
-                    {choice.text}
-                  </li>
-                )
-            )}
-          </ul>
-          <p className="font-bold">Incorrect choices:</p>
-          <ul>
-            {quiz.choices.map(
-              (choice, index) =>
-                !choice.correct &&
-                selectedChoices.includes(choice.text) && (
-                  <li key={index} className="text-red-500">
-                    {choice.text}
-                  </li>
-                )
-            )}
-          </ul>
-        </div>
       )}
     </div>
   );
