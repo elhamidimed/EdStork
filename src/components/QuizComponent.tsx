@@ -27,7 +27,7 @@ const QuizComponent: React.FC<QuizProps> = ({ quiz, onChange }) => {
   };
 
   return (
-    <div className="flex flex-col items-start space-y-2 w-3/4">
+    <div className="flex flex-col items-start space-y-2">
       <p className="font-bold">{quiz.question}</p>
       {quiz.choices.map((choice, index) => (
         <label
