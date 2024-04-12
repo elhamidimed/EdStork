@@ -5,7 +5,13 @@ export const levels = pgTable("levels", {
   title: text("title").notNull(),
 });
 
-export const lessons = pgTable("courses", {
+export const lessons = pgTable("lessons", {
   id: text("id").primaryKey(),
-  json_content: jsonb("json-content"),
+  lesson_content: jsonb("lesson_content"),
+});
+
+export const subjects = pgTable("subjects", {
+  id: serial("id").primaryKey(),
+  title: text("title"),
+  imgSrc: text("img_source"),
 });

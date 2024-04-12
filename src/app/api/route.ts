@@ -13,14 +13,14 @@ export async function GET(request: NextRequest) {
     const lessonRecord = await db
       .select({
         id: schema.lessons.id,
-        json_content: schema.lessons.json_content,
+        lesson_content: schema.lessons.lesson_content,
       })
       .from(schema.lessons)
       .where(eq(schema.lessons.id, lessonId))
       .execute();
 
     if (lessonRecord.length > 0) {
-      return NextResponse.json(lessonRecord[0].json_content);
+      return NextResponse.json(lessonRecord[0].lesson_content);
     } else {
       return NextResponse.json(
         { message: "Lesson not found" },
