@@ -4,11 +4,12 @@ import { ArrowLeft } from "lucide-react";
 
 type Props = {
   subject: string;
+  subject_id: number;
 };
-export const Header = ({ subject }: Props) => {
+export const Header = ({ subject, subject_id }: Props) => {
   return (
     <div className="sticky top-0 bg-white pb-3 lg:pt-[28px] lg:mt-[-28px] flex items-center justify-between border-b-2 mb-5 text-neutral-400 lg:z-50">
-      <Link href="/levels">
+      <Link href={"/levels/chapters/" + subject_id}>
         <Button variant={"ghost"} size={"sm"}>
           <ArrowLeft className="h-5 w-5 stroke-2 text-neutral-400" />
         </Button>

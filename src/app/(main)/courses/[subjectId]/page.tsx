@@ -3,7 +3,8 @@ import { FeedWrapper } from "@/components/feed-wrapper";
 import { Header } from "./header";
 import { UserProgress } from "@/components/user-progress";
 import atom from "@/imcons/atom.png";
-import { Lessons } from "../lessons";
+import { Lessons } from "../../lessons";
+import { getSubjectbyid } from "../../../../../db/queries";
 
 var mockLessons = [
   { id: 1, completed: true },
@@ -17,11 +18,13 @@ var mockLessons = [
   { id: 9, completed: false },
 ];
 
-export default function Courses() {
+const Courses = async ({ params }: { params: { subjectId: any } }) => {
+  const subject = await getSubjectbyid(params.subjectId);
+
   return (
     <div className="flex gap-[48px] px-6">
       <FeedWrapper>
-        <Header subject="Physique" />
+        <Header subject={subject[0].title} subject_id={params.subjectId} />
         <div className="mb-10">
           <Lessons
             id={1}
@@ -31,6 +34,7 @@ export default function Courses() {
             lessons={mockLessons}
             activeLesson={{ id: 3 }}
             activeLessonPercentage={60}
+            color={subject[0].color}
           />
         </div>
       </FeedWrapper>
@@ -44,4 +48,6 @@ export default function Courses() {
       </StickyWrapper>
     </div>
   );
-}
+};
+
+export default Courses;

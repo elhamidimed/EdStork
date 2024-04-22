@@ -18,6 +18,7 @@ type Props = {
   locked?: boolean;
   current?: boolean;
   percentage: number;
+  color: string;
 };
 
 export const LessonButton = ({
@@ -27,6 +28,7 @@ export const LessonButton = ({
   locked,
   current,
   percentage,
+  color,
 }: Props) => {
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
@@ -68,7 +70,9 @@ export const LessonButton = ({
       >
         {current ? (
           <div className="h-[102px] w-[102px] relative">
-            <div className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold uppercase text-purple-500 bg-white rounded-xl animate-bounce tracking-wide z-10">
+            <div
+              className={`absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold uppercase text-${color}-500 bg-white rounded-xl animate-bounce tracking-wide z-10`}
+            >
               Start
               <div className="absolute left-1/2 -bottom-2 w-0 h-0 border-x-8 border-x-transparent border-t-8 transform -translate-x-1/2" />
             </div>
@@ -76,7 +80,7 @@ export const LessonButton = ({
               value={Number.isNaN(percentage) ? 0 : percentage}
               styles={{
                 path: {
-                  stroke: "purple",
+                  stroke: color,
                 },
                 trail: {
                   stroke: "#e5e7eb",
@@ -86,7 +90,7 @@ export const LessonButton = ({
               <div
                 className={cn(
                   "flex items-center justify-center h-[70px] w-[70px] rounded-2xl border-2 border-b-[12px] border-r-[12px] border-gray-500 ",
-                  locked ? "bg-slate-200" : "bg-purple-400"
+                  locked ? "bg-slate-200" : `bg-${color}-400`
                 )}
                 style={{ transform: "rotateX(45deg) rotateZ(45deg)" }}
               >
@@ -94,7 +98,7 @@ export const LessonButton = ({
                   variant={locked ? "locked" : "secondary"}
                   className={cn(
                     "-mt-[10px] -ml-[10px] h-[55px] w-[55px] border-2 border-b-[11px] border-r-[11px] hover:-mt-1 hover:-ml-1 border-gray-500 ",
-                    !locked ? "bg-purple-400 hover:bg-purple-300" : ""
+                    !locked ? `bg-${color}-400 hover:bg-${color}-300` : ""
                   )}
                 >
                   <Icon
@@ -114,7 +118,7 @@ export const LessonButton = ({
           <div
             className={cn(
               "flex items-center justify-center h-[70px] w-[70px] rounded-2xl border-2 border-b-[12px] border-r-[12px] border-gray-500 ",
-              locked ? "bg-slate-200" : "bg-purple-400"
+              locked ? "bg-slate-200" : `bg-${color}-400`
             )}
             style={{ transform: "rotateX(45deg) rotateZ(45deg)" }}
           >
@@ -122,7 +126,7 @@ export const LessonButton = ({
               variant={locked ? "locked" : "secondary"}
               className={cn(
                 "-mt-[10px] -ml-[10px] h-[55px] w-[55px] border-2 border-b-[11px] border-r-[11px] hover:-mt-1 hover:-ml-1 border-gray-500 ",
-                !locked ? "bg-purple-400 hover:bg-purple-300" : ""
+                !locked ? `bg-${color}-400 hover:bg-${color}-300` : ""
               )}
             >
               <Icon

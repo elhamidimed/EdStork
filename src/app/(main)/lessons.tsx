@@ -13,6 +13,7 @@ type Props = {
       }
     | undefined;
   activeLessonPercentage: number;
+  color: string;
 };
 
 export const Lessons = ({
@@ -23,10 +24,11 @@ export const Lessons = ({
   lessons,
   activeLesson,
   activeLessonPercentage,
+  color,
 }: Props) => {
   return (
     <>
-      <UnitBanner title={title} description={description} />
+      <UnitBanner title={title} description={description} color={color} />
       <div className="flex items-center flex-col relative">
         {lessons.map((lesson, index) => {
           const isCurrent = lesson.id === activeLesson?.id;
@@ -41,6 +43,7 @@ export const Lessons = ({
               current={isCurrent}
               locked={isLocked}
               percentage={activeLessonPercentage}
+              color={color}
             />
           );
         })}
