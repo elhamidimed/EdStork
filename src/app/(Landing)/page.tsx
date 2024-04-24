@@ -34,7 +34,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <div className="w-200">
-              <Link href="/courses">
+              <Link href="/levels">
                 <Button className="w-[280px] h-[56px]" variant="main">
                   Découvrir
                 </Button>
