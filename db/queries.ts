@@ -35,6 +35,7 @@ export const getChapters = cache(async (levelNumber: any) => {
     })
     .from(schema.chapters)
     .where(eq(schema.chapters.subject_id, levelNumber))
+    .orderBy(schema.chapters.order)
     .execute();
 
   return data;
