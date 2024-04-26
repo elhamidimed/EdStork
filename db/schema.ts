@@ -1,4 +1,4 @@
-import { pgTable, serial, text, jsonb, integer } from "drizzle-orm/pg-core";
+import { pgTable, primaryKey, serial, text, jsonb, integer, boolean } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 export const levels = pgTable("levels", {
@@ -41,4 +41,17 @@ export const chapters = pgTable("chapters", {
   name: text("name"),
   progress: integer("progress"),
   order: integer("order"),
+});
+
+export const userProgress = pgTable("user_progress", {
+  lessonNumber: text("lesson_number"),
+  userId: text("user_id"),
+  chapterIndex: integer("chapter_index"),
+  pageIndex: integer("page_index"),
+  selectedChoices: jsonb("selected_choices"),
+  isQuizSection: boolean("is_quiz_section"),
+}, (table) => {
+  return {
+    pk: primaryKey({ columns: [table.lessonNumber, table.userId] })
+  };
 });

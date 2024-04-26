@@ -40,3 +40,26 @@ export const getChapters = cache(async (levelNumber: any) => {
 
   return data;
 });
+
+export const getProgress = cache(async (userId: string, lesson_number: string) => {
+  const data = await db.select()
+  .from(schema.userProgress)
+  .where(eq(schema.userProgress.userId, userId) && eq(schema.userProgress.lessonNumber, lesson_number))
+  .execute();
+
+  return data;
+});
+
+// export const saveLessonProgress = async (
+//   lessonNumber: string,
+//   userId: string,
+//   chapterIndex: number,
+//   pageIndex: number,
+//   selectedChoices: JSON,
+//   isQuizSection: boolean
+// ) => {
+//   await db.userProgress.save(
+//     { lessonNumber, userId, chapterIndex, pageIndex, selectedChoices, isQuizSection },
+//     { upsert: true }
+//   );
+// };

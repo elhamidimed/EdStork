@@ -2,8 +2,16 @@
 import React, { useEffect, useState } from "react";
 import QuizComponent from "./QuizComponent";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/clerk-react";
+import { getProgress } from "../../db/queries";
+import { userProgress } from "../../db/schema";
+import db from "../../db/drizzle";
 
 const LessonComponent = ({ lessonNumber }: { lessonNumber: string }) => {
+  const { isSignedIn, isLoaded, user } = useUser();
+  var userId = "";
+  if (isLoaded && user != null) userId = user.id;
+
   const [lessonContent, setLessonContent] = useState<any>(null);
   const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -23,10 +31,54 @@ const LessonComponent = ({ lessonNumber }: { lessonNumber: string }) => {
       } catch (error) {
         console.error("Error fetching lesson data:", error);
       }
+
+      try {
+        const progress = await fetch(
+          `/api/userProgress?userId=${userId}&lessonNumber=${lessonNumber}`
+        );
+        if (progress.ok) {
+          const data = await progress.json();
+          setCurrentChapterIndex(data.chapterIndex);
+          setCurrentPageIndex(data.pageIndex);
+          setSelectedChoices(data.selectedChoices);
+          setQuizSection(data.isQuizSection);
+        } else {
+          console.error(
+            "Failed to fetch lesson progress:",
+            progress.statusText
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching lesson progress:", error);
+      }
     };
 
     fetchLessonData();
   }, [lessonNumber]);
+
+  const saveProgress = async () => {
+    try {
+      const response = await fetch("/api/userProgress", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          lessonNumber,
+          userId,
+          chapterIndex: currentChapterIndex,
+          pageIndex: currentPageIndex,
+          selectedChoices,
+          isQuizSection,
+        }),
+      });
+      if (!response.ok) {
+        console.error("Failed to save progress:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error saving progress:", error);
+    }
+  };
 
   const handleNextPage = () => {
     if (isQuizSection) {
@@ -48,6 +100,7 @@ const LessonComponent = ({ lessonNumber }: { lessonNumber: string }) => {
     ) {
       setQuizSection(true);
     }
+    saveProgress();
   };
 
   const handlePreviousPage = () => {
