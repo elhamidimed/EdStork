@@ -41,14 +41,20 @@ export const getChapters = cache(async (levelNumber: any) => {
   return data;
 });
 
-export const getProgress = cache(async (userId: string, lesson_number: string) => {
-  const data = await db.select()
-  .from(schema.userProgress)
-  .where(eq(schema.userProgress.userId, userId) && eq(schema.userProgress.lessonNumber, lesson_number))
-  .execute();
+export const getProgress = cache(
+  async (userId: string, lesson_number: string) => {
+    const data = await db
+      .select()
+      .from(schema.userProgress)
+      .where(
+        eq(schema.userProgress.userId, userId) &&
+          eq(schema.userProgress.lessonNumber, lesson_number)
+      )
+      .execute();
 
-  return data;
-});
+    return data;
+  }
+);
 
 // export const saveLessonProgress = async (
 //   lessonNumber: string,
@@ -63,3 +69,19 @@ export const getProgress = cache(async (userId: string, lesson_number: string) =
 //     { upsert: true }
 //   );
 // };
+
+export const getUserWithLevel = cache(async (userId: string) => {
+  const data = await db
+    .select({
+      user_id: schema.users.id,
+      username: schema.users.username,
+      level_title: schema.levels.title,
+    })
+    .from(schema.users)
+    .where(
+      eq(schema.users.levelId, schema.levels.id) && eq(schema.users.id, userId)
+    )
+    .execute();
+
+  return data;
+});

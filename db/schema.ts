@@ -1,4 +1,12 @@
-import { pgTable, primaryKey, serial, text, jsonb, integer, boolean } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  primaryKey,
+  serial,
+  text,
+  jsonb,
+  integer,
+  boolean,
+} from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 export const levels = pgTable("levels", {
@@ -43,15 +51,36 @@ export const chapters = pgTable("chapters", {
   order: integer("order"),
 });
 
-export const userProgress = pgTable("user_progress", {
-  lessonNumber: text("lesson_number"),
-  userId: text("user_id"),
-  chapterIndex: integer("chapter_index"),
-  pageIndex: integer("page_index"),
-  selectedChoices: jsonb("selected_choices"),
-  isQuizSection: boolean("is_quiz_section"),
-}, (table) => {
-  return {
-    pk: primaryKey({ columns: [table.lessonNumber, table.userId] })
-  };
+export const userProgress = pgTable(
+  "user_progress",
+  {
+    lessonNumber: text("lesson_number"),
+    userId: text("user_id"),
+    chapterIndex: integer("chapter_index"),
+    pageIndex: integer("page_index"),
+    selectedChoices: jsonb("selected_choices"),
+    isQuizSection: boolean("is_quiz_section"),
+  },
+  (table) => {
+    return {
+      pk: primaryKey({ columns: [table.lessonNumber, table.userId] }),
+    };
+  }
+);
+
+export const users = pgTable("users", {
+  id: text("id").primaryKey(),
+  username: text("username").notNull(),
+  // password: text("password").notNull(),
+  // email: text("email").notNull(),
+  levelId: integer("level_id").references(() => levels.id, {
+    onDelete: "set null",
+  }),
 });
+
+export const usersRelations = relations(users, ({ one, many }) => ({
+  level: one(levels, {
+    fields: [users.levelId],
+    references: [levels.id],
+  }),
+}));
