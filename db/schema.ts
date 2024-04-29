@@ -46,6 +46,7 @@ export const subjects = pgTable("subjects", {
 export const chapters = pgTable("chapters", {
   id: serial("id").primaryKey(),
   subject_id: serial("subject_id"),
+  description: text("description"),
   name: text("name"),
   progress: integer("progress"),
   order: integer("order"),

@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import db from "./drizzle";
 import * as schema from "./schema";
 
@@ -32,6 +32,7 @@ export const getChapters = cache(async (levelNumber: any) => {
       subject_id: schema.chapters.subject_id,
       name: schema.chapters.name,
       progress: schema.chapters.progress,
+      description: schema.chapters.description,
     })
     .from(schema.chapters)
     .where(eq(schema.chapters.subject_id, levelNumber))

@@ -3,8 +3,8 @@ import { FeedWrapper } from "@/components/feed-wrapper";
 import { Header } from "./header";
 import { UserProgress } from "@/components/user-progress";
 import atom from "@/imcons/atom.png";
-import { Lessons } from "../../lessons";
-import { getSubjectbyid } from "../../../../../db/queries";
+import { Lessons } from "../../../lessons";
+import { getChapters, getSubjectbyid } from "../../../../../../db/queries";
 
 var mockLessons = [
   { id: 1, completed: true },
@@ -18,8 +18,14 @@ var mockLessons = [
   { id: 9, completed: false },
 ];
 
-const Courses = async ({ params }: { params: { subjectId: any } }) => {
+const Courses = async ({
+  params,
+}: {
+  params: { subjectId: any; chapterId: any };
+}) => {
   const subject = await getSubjectbyid(params.subjectId);
+
+  const data = await getChapters(params.subjectId as string);
 
   return (
     <div className="flex gap-[48px] px-6">
@@ -29,8 +35,8 @@ const Courses = async ({ params }: { params: { subjectId: any } }) => {
           <Lessons
             id={1}
             order={1}
-            title="Mécanique"
-            description="mécanique Newtonienne et lois de conservation"
+            title={data.at(params.chapterId)?.name || ""}
+            description={data.at(params.chapterId)?.description || ""}
             lessons={mockLessons}
             activeLesson={{ id: 3 }}
             activeLessonPercentage={60}

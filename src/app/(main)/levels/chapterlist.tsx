@@ -10,8 +10,8 @@ type Props = {
 export const ChapterList = ({ chapters, activechapterID }: Props) => {
   return (
     <div className="w-full pt-6 grid grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(210,1fr))] gap-4">
-      {chapters.map((chapter) => (
-        <a href={"/courses/" + chapter.subject_id}>
+      {chapters.map((chapter, index) => (
+        <a href={"/courses/" + chapter.subject_id + "/" + index}>
           <ChapterCard
             key={chapter.id}
             id={chapter.id}

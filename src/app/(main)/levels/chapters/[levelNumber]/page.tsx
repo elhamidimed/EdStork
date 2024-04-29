@@ -14,7 +14,10 @@ const Chapters = async ({ params }: { params: { levelNumber: any } }) => {
         {"Chapitres de "}
         {subject ? subject.at(0)?.title : ""}
       </h1>
-      <ChapterList chapters={data} activechapterID={1} />
+      <ChapterList
+        chapters={data.map((chapter) => ({ ...chapter, order: null }))}
+        activechapterID={1}
+      />
     </div>
   );
 };
